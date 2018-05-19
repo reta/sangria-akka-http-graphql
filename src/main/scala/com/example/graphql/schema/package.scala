@@ -30,7 +30,7 @@ package object schema {
       case _ => Left(LocalDateTimeCoercionViolation)
     },
     coerceInput = {
-      case StringValue(s, _, _) => parseLocalDateTime(s)
+      case strVal: StringValue => parseLocalDateTime(strVal.value)
       case _ => Left(LocalDateTimeCoercionViolation)
     })
 }
